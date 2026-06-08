@@ -1,0 +1,40 @@
+# Maven / Java
+target/
+generated-sources/
+*.class
+*.jar
+*.war
+*.ear
+
+# Build and IDE files
+.classpath
+.project
+.settings/
+.idea/
+*.iml
+.vscode/
+
+# Logs
+*.log
+logs/
+
+# Tomcat runtime artifacts
+Tomcat 9.0_Tomcat/
+runtime/tomcat10/apache-tomcat-*/logs/
+runtime/tomcat10/apache-tomcat-*/temp/
+runtime/tomcat10/apache-tomcat-*/work/
+
+# Maven wrapper
+.mvn/wrapper/maven-wrapper.jar
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Temporary files
+*.swp
+*.swo
+target/
+.idea/
+.vscode/
+*.iml
