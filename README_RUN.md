@@ -2,6 +2,22 @@
 
 This document explains how to build, configure, and run the E-Library web application locally (Tomcat + MySQL).
 
+## 1. Introduction
+
+E-Library is a web-based library management application designed to help users manage books, members, and circulation activities through a browser-based interface. The project is implemented as a Java web application and is intended to run on Tomcat with a MySQL database backend.
+
+### 1.1 Project Overview
+
+The application provides separate areas for administrators and students. Administrators can manage books, students, issued items, returns, and fines, while students can browse the catalog, view their dashboard, and check related account information.
+
+### 1.2 Objectives
+
+The main objectives of the project are to simplify library operations, reduce manual record keeping, and provide a centralized system for tracking book availability, borrowing activity, and student access to library services.
+
+### 1.3 Scope of the Project
+
+The scope of the project covers local deployment, database-backed library management, authentication, catalog browsing, issue and return workflows, and fine tracking. It does not include cloud hosting, mobile clients, or third-party integrations beyond the local MySQL and Tomcat setup described below.
+
 ## Prerequisites
 
 - Java JDK 17+ installed and `JAVA_HOME` set.
@@ -55,9 +71,9 @@ $env:CATALINA_HOME = 'C:\Users\omen\Desktop\E library\Tomcat 9.0_Tomcat'
 2. Copy the WAR to Tomcat `webapps` and restart Tomcat:
 
 ```powershell
-if (!(Test-Path "$env:CATALINA_HOME\bin\startup.bat")) { throw "Invalid CATALINA_HOME: $env:CATALINA_HOME" }
-Copy-Item -Force target\elibrary.war "$env:CATALINA_HOME\webapps\"
-if (Test-Path "$env:CATALINA_HOME\bin\shutdown.bat") { & "$env:CATALINA_HOME\bin\shutdown.bat" }
+$env:CATALINA_HOME = "C:\Users\omen\Desktop\E library\Tomcat 9.0_Tomcat"
+Copy-Item -Force target\elibrary.war "$env:CATALINA_HOME\webapps\ROOT.war"
+& "$env:CATALINA_HOME\bin\shutdown.bat"
 & "$env:CATALINA_HOME\bin\startup.bat"
 ```
 
@@ -71,7 +87,7 @@ Notes:
 Open in browser:
 
 ```
-http://localhost:8080/elibrary/
+http://localhost:8081/elibrary/
 ```
 
 Common pages:

@@ -11,7 +11,7 @@
             <link href="${pageContext.request.contextPath}/assets/css/style.css" rel="stylesheet">
         </head>
 
-        <body>
+        <body class="app-page">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
                     <a class="navbar-brand fw-bold" href="${pageContext.request.contextPath}/admin/dashboard">E-Library
@@ -43,7 +43,7 @@
                     <div class="alert alert-success">${sessionScope.flashMessage}</div>
                 </c:if>
 
-                <div class="mb-4">
+                <div class="page-header mb-4">
                     <span class="badge text-bg-primary brand-pill">Admin Overview</span>
                     <h1 class="fw-bold mt-2 mb-1">Dashboard</h1>
                     <p class="text-muted">Track catalog size, active borrowing, and the most recent circulation

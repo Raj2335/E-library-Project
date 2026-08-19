@@ -11,7 +11,7 @@
             <link href="${pageContext.request.contextPath}/assets/css/style.css" rel="stylesheet">
         </head>
 
-        <body>
+        <body class="app-page">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
                     <a class="navbar-brand fw-bold" href="${pageContext.request.contextPath}/admin/dashboard">E-Library
@@ -26,6 +26,11 @@
             </nav>
 
             <div class="container py-4">
+                <div class="page-header mb-4">
+                    <span class="badge text-bg-primary brand-pill">Catalog Studio</span>
+                    <h1 class="fw-bold mt-2 mb-1">Book Management</h1>
+                    <p>Create, edit, and search the library catalog from one clean workspace.</p>
+                </div>
                 <c:if test="${not empty param.success}">
                     <div class="alert alert-success">${param.success}</div>
                 </c:if>

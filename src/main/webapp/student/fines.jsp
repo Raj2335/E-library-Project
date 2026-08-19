@@ -11,7 +11,7 @@
             <link href="${pageContext.request.contextPath}/assets/css/style.css" rel="stylesheet">
         </head>
 
-        <body>
+        <body class="app-page">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="${pageContext.request.contextPath}/student/dashboard">E-Library</a>
@@ -23,8 +23,12 @@
             </nav>
 
             <div class="container py-4">
-                <h3 class="mb-3">Your Fines</h3>
-                <div class="card p-3 mb-3">
+                <div class="page-header mb-3">
+                    <span class="badge text-bg-primary brand-pill">Student Finance</span>
+                    <h1 class="fw-bold mt-2 mb-1">Your Fines</h1>
+                    <p>Keep track of unpaid items and settle them quickly when needed.</p>
+                </div>
+                <div class="card form-card p-3 mb-3">
                     <strong>Total Pending:</strong>
                     <span class="text-danger">₹ ${totalPending}</span>
                 </div>

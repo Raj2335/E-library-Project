@@ -11,7 +11,7 @@
             <link href="${pageContext.request.contextPath}/assets/css/style.css" rel="stylesheet">
         </head>
 
-        <body>
+        <body class="app-page">
             <!-- Preloader -->
             <div id="preloader-overlay">
                 <div class="preloader-card">
@@ -35,7 +35,7 @@
             </nav>
 
             <div class="container py-4">
-                <div class="mb-4">
+                <div class="page-header mb-4">
                     <span class="badge text-bg-primary brand-pill">Book Section</span>
                     <h1 class="fw-bold mt-2 mb-1">Student Book Catalog</h1>
                     <p class="text-muted">Browse the available library books in a card layout with cover images.</p>

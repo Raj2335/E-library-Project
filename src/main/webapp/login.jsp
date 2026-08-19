@@ -11,7 +11,7 @@
             <link href="${pageContext.request.contextPath}/assets/css/style.css" rel="stylesheet">
         </head>
 
-        <body class="auth-page">
+        <body class="auth-page app-page">
             <!-- Preloader -->
             <div id="preloader-overlay">
                 <div class="preloader-card">
@@ -34,7 +34,7 @@
                                         <p class="opacity-75">Manage books, students, borrow cycles, and dashboards in
                                             one MVC web app.</p>
                                     </div>
-                                    <small class="opacity-75">JSP + Servlets + JDBC + MySQL 8 + Tomcat 10</small>
+                                    <small class="opacity-75">JSP + Servlets + JDBC + MySQL 8 + Tomcat 9</small>
                                 </div>
                                 <div class="col-md-7 p-5 bg-white">
                                     <h2 class="fw-bold mb-1">Sign in</h2>

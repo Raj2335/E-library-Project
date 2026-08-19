@@ -11,7 +11,7 @@
             <link href="${pageContext.request.contextPath}/assets/css/style.css" rel="stylesheet">
         </head>
 
-        <body>
+        <body class="app-page">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
                     <a class="navbar-brand fw-bold" href="${pageContext.request.contextPath}/admin/dashboard">E-Library
@@ -26,6 +26,11 @@
             </nav>
 
             <div class="container py-4">
+                <div class="page-header mb-4">
+                    <span class="badge text-bg-primary brand-pill">Circulation</span>
+                    <h1 class="fw-bold mt-2 mb-1">Issue Book</h1>
+                    <p>Assign books to students with a focused workflow and live borrow visibility.</p>
+                </div>
                 <div class="row g-4">
                     <div class="col-lg-4">
                         <div class="card form-card p-4">
@@ -43,7 +48,8 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Book
-                                        <button type="button" id="addBookBtn" class="btn btn-sm btn-outline-primary ms-2">+</button>
+                                        <button type="button" id="addBookBtn"
+                                            class="btn btn-sm btn-outline-primary ms-2">Add</button>
                                     </label>
 
                                     <div id="booksContainer">
@@ -51,7 +57,8 @@
                                             <select class="form-select" name="bookId" required>
                                                 <option value="">Select book</option>
                                                 <c:forEach var="book" items="${books}">
-                                                    <option value="${book.id}" <c:if test="${book.availableQuantity == 0}">
+                                                    <option value="${book.id}" <c:if
+                                                        test="${book.availableQuantity == 0}">
                                                         disabled class="book-option-out-of-stock"</c:if>>
                                                         ${book.title} (Available: ${book.availableQuantity}<c:if
                                                             test="${book.availableQuantity == 0}">, Out of stock</c:if>)
@@ -136,12 +143,19 @@
 
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
             <script>
-                document.addEventListener('DOMContentLoaded', function() {
+                document.addEventListener('DOMContentLoaded', function () {
                     const addBtn = document.getElementById('addBookBtn');
                     const container = document.getElementById('booksContainer');
                     if (!addBtn || !container) return;
 
-                    addBtn.addEventListener('click', function() {
+                    addBtn.addEventListener('click', function () {
+                        const MAX_SELECTS = 5;
+                        const currentSelects = container.querySelectorAll('select').length;
+                        if (currentSelects >= MAX_SELECTS) {
+                            alert('You can issue a maximum of ' + MAX_SELECTS + ' books at once.');
+                            return;
+                        }
+
                         const firstSelect = container.querySelector('select');
                         if (!firstSelect) return;
                         const clone = firstSelect.cloneNode(true);
@@ -161,7 +175,7 @@
                         removeBtn.className = 'btn btn-sm btn-outline-danger';
                         removeBtn.textContent = '−';
                         removeBtn.title = 'Remove this book';
-                        removeBtn.addEventListener('click', function() { row.remove(); });
+                        removeBtn.addEventListener('click', function () { row.remove(); });
                         row.appendChild(removeBtn);
 
                         container.appendChild(row);

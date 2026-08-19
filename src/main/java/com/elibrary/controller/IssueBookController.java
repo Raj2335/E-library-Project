@@ -65,7 +65,8 @@ public class IssueBookController extends HttpServlet {
             // Deduplicate selected book IDs while preserving order
             Set<Integer> uniqueBookIds = new LinkedHashSet<>();
             for (String bid : bookIds) {
-                if (bid == null || bid.trim().isEmpty()) continue;
+                if (bid == null || bid.trim().isEmpty())
+                    continue;
                 try {
                     uniqueBookIds.add(Integer.parseInt(bid.trim()));
                 } catch (NumberFormatException ignored) {
@@ -73,9 +74,10 @@ public class IssueBookController extends HttpServlet {
             }
 
             // Enforce per-student active borrow limit
-            final int MAX_ACTIVE_BOOKS = 3; // change if different policy desired
+            final int MAX_ACTIVE_BOOKS = 5; // allow issuing up to 5 books per student
             List<com.elibrary.model.Borrow> current = borrowDAO.findCurrentBorrowsByStudentId(studentId);
-            Set<Integer> alreadyBorrowed = current.stream().map(com.elibrary.model.Borrow::getBookId).collect(Collectors.toSet());
+            Set<Integer> alreadyBorrowed = current.stream().map(com.elibrary.model.Borrow::getBookId)
+                    .collect(Collectors.toSet());
             int remainingAllowed = Math.max(0, MAX_ACTIVE_BOOKS - current.size());
 
             int success = 0, failed = 0, skippedDueToAlready = 0, skippedDueToLimit = 0;
@@ -105,8 +107,11 @@ public class IssueBookController extends HttpServlet {
 
             StringBuilder flash = new StringBuilder();
             flash.append("Books processed: success=").append(success).append(", failed=").append(failed);
-            if (skippedDueToAlready > 0) flash.append(", skippedAlreadyBorrowed=").append(skippedDueToAlready);
-            if (skippedDueToLimit > 0) flash.append(", skippedLimitReached=").append(skippedDueToLimit).append(" (max=").append(MAX_ACTIVE_BOOKS).append(")");
+            if (skippedDueToAlready > 0)
+                flash.append(", skippedAlreadyBorrowed=").append(skippedDueToAlready);
+            if (skippedDueToLimit > 0)
+                flash.append(", skippedLimitReached=").append(skippedDueToLimit).append(" (max=")
+                        .append(MAX_ACTIVE_BOOKS).append(")");
             request.getSession().setAttribute("flash", flash.toString());
             response.sendRedirect(request.getContextPath() + "/admin/issue-book");
         } catch (Exception exception) {
@@ -114,4 +119,3 @@ public class IssueBookController extends HttpServlet {
         }
     }
 }
-

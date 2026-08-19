@@ -11,7 +11,7 @@
             <link href="${pageContext.request.contextPath}/assets/css/style.css" rel="stylesheet">
         </head>
 
-        <body>
+        <body class="app-page">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="${pageContext.request.contextPath}/admin/dashboard">E-Library
@@ -24,10 +24,15 @@
             </nav>
 
             <div class="container py-4">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h3>Fines</h3>
+                <div
+                    class="page-header mb-3 d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3">
+                    <div>
+                        <span class="badge text-bg-primary brand-pill">Fine Control</span>
+                        <h1 class="fw-bold mt-2 mb-1">Fines</h1>
+                        <p>Review overdue charges, mark payments, and keep circulation penalties current.</p>
+                    </div>
                     <form method="post" action="${pageContext.request.contextPath}/admin/calculate-fines">
-                        <button class="btn btn-primary">Calculate Fines Now</button>
+                        <button class="btn btn-primary px-4">Calculate Fines Now</button>
                     </form>
                 </div>
 

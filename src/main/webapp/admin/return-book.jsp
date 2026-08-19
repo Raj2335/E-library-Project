@@ -11,7 +11,7 @@
             <link href="${pageContext.request.contextPath}/assets/css/style.css" rel="stylesheet">
         </head>
 
-        <body>
+        <body class="app-page">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
                     <a class="navbar-brand fw-bold" href="${pageContext.request.contextPath}/admin/dashboard">E-Library
@@ -26,6 +26,11 @@
             </nav>
 
             <div class="container py-4">
+                <div class="page-header mb-4">
+                    <span class="badge text-bg-primary brand-pill">Circulation</span>
+                    <h1 class="fw-bold mt-2 mb-1">Return Book</h1>
+                    <p>Close borrow records, calculate fines, and update return status in one place.</p>
+                </div>
                 <div class="row g-4">
                     <div class="col-lg-4">
                         <div class="card form-card p-4">
@@ -39,7 +44,7 @@
 
                                     <label class="form-label">Borrow Record
                                         <button type="button" id="addReturnBtn"
-                                            class="btn btn-sm btn-outline-primary ms-2">+</button>
+                                            class="btn btn-sm btn-outline-primary ms-2">+ (Add)</button>
                                     </label>
 
                                     <div id="returnsContainer">
@@ -207,6 +212,13 @@
 
                     if (addBtn) {
                         addBtn.addEventListener('click', function () {
+                            const MAX_SELECTS = 5;
+                            const currentSelects = container.querySelectorAll('select.return-select').length;
+                            if (currentSelects >= MAX_SELECTS) {
+                                alert('You can return a maximum of ' + MAX_SELECTS + ' books at once.');
+                                return;
+                            }
+
                             const firstSelect = container.querySelector('select.return-select');
                             if (!firstSelect) return;
                             const clone = firstSelect.cloneNode(true);

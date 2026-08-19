@@ -81,11 +81,6 @@ CREATE TABLE IF NOT EXISTS fines (
         CONSTRAINT fk_fines_book FOREIGN KEY (book_id) REFERENCES book(id) ON DELETE CASCADE
 );
 
--- Seed: add some dummy students (only if student table is empty)
-INSERT INTO student (name, roll_num, email) 
-SELECT 'Riya Patel', 'STU2001', 'riya.patel@example.com' WHERE NOT EXISTS (SELECT 1 FROM student WHERE roll_num='STU2001');
-INSERT INTO student (name, roll_num, email) 
-SELECT 'Kabir Singh', 'STU2002', 'kabir.singh@example.com' WHERE NOT EXISTS (SELECT 1 FROM student WHERE roll_num='STU2002');
 
 -- Example: insert fines for demonstration (only if not already present)
 -- This assumes there are borrow records; if not, these are no-op.
