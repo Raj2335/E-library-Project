@@ -11,7 +11,7 @@
             <link href="${pageContext.request.contextPath}/assets/css/style.css" rel="stylesheet">
         </head>
 
-        <body>
+        <body class="app-page">
             <!-- Preloader -->
             <div id="preloader-overlay">
                 <div class="preloader-card">
@@ -37,7 +37,7 @@
             </nav>
 
             <div class="container py-4">
-                <div class="mb-4">
+                <div class="page-header mb-4">
                     <span class="badge text-bg-primary brand-pill">Student Overview</span>
                     <h1 class="fw-bold mt-2 mb-1">Welcome, ${profile.name}</h1>
                     <p class="text-muted">Browse featured books and track your active borrows below.</p>

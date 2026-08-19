@@ -11,7 +11,7 @@
             <link href="${pageContext.request.contextPath}/assets/css/style.css" rel="stylesheet">
         </head>
 
-        <body>
+        <body class="app-page">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
                     <a class="navbar-brand fw-bold" href="${pageContext.request.contextPath}/admin/dashboard">E-Library
@@ -26,6 +26,11 @@
             </nav>
 
             <div class="container py-4">
+                <div class="page-header mb-4">
+                    <span class="badge text-bg-primary brand-pill">People Desk</span>
+                    <h1 class="fw-bold mt-2 mb-1">Student Management</h1>
+                    <p>Register learners, keep contact information current, and search records quickly.</p>
+                </div>
                 <div class="row g-4">
                     <div class="col-lg-5">
                         <div class="card form-card p-4">
